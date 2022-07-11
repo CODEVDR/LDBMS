@@ -42,3 +42,6 @@ def read_query(connection, query):
     cursor.execute(query)
     result = cursor.fetchall()
     return result
+q1=f"create database if not exists gnps;"
+cnecn=connect_server()
+execute_query(cnecn[0],q1)

@@ -15,7 +15,7 @@ while True:
     print("6. Student Returned Book/Books.")
     n = input("Select and Enter : ")
     if n.isdigit():
-        if int(n[0]) <= 5 and int(n[0]) > 0:
+        if int(n[0]) <= 6 and int(n[0]) > 0:
             n = n[0]
         else:
             print("Enter a valid option")

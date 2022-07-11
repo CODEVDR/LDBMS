@@ -2,7 +2,7 @@ import os
 import datetime
 from mymodules import*
 
-print("\t\t\t\t\tLibrary Management System")
+print("\t\t\t\t\tLibrary Database Management System")
 print("connecting server..")
 cs = connect_server()
 while True:
@@ -11,7 +11,8 @@ while True:
     print("2. Student borrowing a Book.")
     print("3. Book Damaged or book lost by student.")
     print("4. Update Book Name or Book Number.")
-    print("5. To see borrowing history of Student")
+    print("5. To see Books borrowing history of Student.")
+    print("6. Student Returned Book/Books.")
     n = input("Select and Enter : ")
     if n.isdigit():
         if int(n[0]) <= 5 and int(n[0]) > 0:
@@ -163,7 +164,7 @@ while True:
             execute_query(cnecn, q1)
         else:
             print("Select and Enter from [1/2]")
-    else:
+    elif n=="5":
         try:  # tested OK
             stud_nm = input("Enter Student Name : ").capitalize()
             cnecn = connect_database(cs[1])
@@ -178,6 +179,18 @@ while True:
         except:
             print("Student Name Is Not Present in Database")
             pass
+    elif n=="6":
+        s=input("Does Student Returned all books or a particular book\n1.All Books\n2.Particular Book\nSelect And Enter : ").upper()
+        cnecn = connect_database(cs[1])
+        if s[0]=="1":
+            stud_nm=input("Enter Student Name : ")
+            q1=f"""drop table {stud_nm}"""
+            execute_query(cnecn,q1)
+        elif s[0]=="2":
+            stud_nm=input("Enter Student Name : ")
+            book_no=int(input("Enter Book Number : "))
+            q1=f"delete from {stud_nm} where Book_No={book_no};"
+            execute_query(cnecn,q1)
     s=input("Do You Want to Continue [Y/N] : ").upper()
     if s[0]=="Y":s=s[0]
     elif s[0]=="N":s=s[0]

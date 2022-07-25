@@ -1,4 +1,4 @@
-# LDBMS
+# Library Database Management System 
 Software requirement:-
 Windows 7 or higher
 32 or 64 bit 
